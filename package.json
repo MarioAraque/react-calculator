@@ -1,0 +1,23 @@
+{
+  "name": "react-calculator",
+  "version": "1.0.0",
+  "description": "Calculator in ReactJS",
+  "main": "index.js",
+  "scripts": {
+    "build-css": "node-sass --include-path scss assets/styles/app.scss app/styles/styles.css",
+    "build-js": "browserify -t [ babelify --presets [ react es2015 ] ] assets/scripts/app.js -o app/scripts/app.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "babelify": "^7.2.0",
+    "bootstrap-sass": "^3.3.6",
+    "browserify": "^12.0.1",
+    "jquery": "^2.1.4",
+    "node-sass": "^3.4.2",
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5"
+  }
+}
