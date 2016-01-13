@@ -4,8 +4,12 @@
   "description": "Calculator in ReactJS",
   "main": "index.js",
   "scripts": {
-    "build-css": "node-sass --include-path scss assets/styles/app.scss app/styles/styles.css",
-    "build-js": "browserify -t [ babelify --presets [ react es2015 ] ] assets/scripts/app.js -o app/scripts/app.js"
+    "build-css": "node-sass app/assets/styles/app.scss app/public/styles/styles.css",
+    "watch-scripts": "watchify -t [ babelify --presets [ react es2015 ] ] app/assets/scripts/app.js -o app/public/scripts/app.js",
+    "watch-styles": "watch 'npm run build-css' app/assets/styles/",
+    "watch": "parallelshell 'npm run watch-scripts' 'npm run watch-styles'",
+    "server": "lr-http-server -d app/ -p 9095 -l 30005 -w **/*.js,**/*.css,**/*.html,**/*.jsx",
+    "dev": "parallelshell 'npm run server' 'npm run watch'"
   },
   "author": "",
   "license": "ISC",
@@ -16,8 +20,12 @@
     "bootstrap-sass": "^3.3.6",
     "browserify": "^12.0.1",
     "jquery": "^2.1.4",
+    "livereload": "^0.4.0",
+    "lr-http-server": "^0.1.1",
     "node-sass": "^3.4.2",
     "react": "^0.14.5",
-    "react-dom": "^0.14.5"
+    "react-dom": "^0.14.5",
+    "watchify": "^3.6.1",
+    "watch": "^0.17.1"
   }
 }

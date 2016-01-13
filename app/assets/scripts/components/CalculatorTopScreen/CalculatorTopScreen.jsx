@@ -14,11 +14,13 @@ export default class CalculatorTopScreen extends React.Component {
     componentDidMount() {
         window.addEventListener('updateCalculatorScreen', this.update.bind(this));
         window.addEventListener('updateCalculatorOperator', this.updateOperator.bind(this));
+        window.addEventListener('executeCalculatorOperation', this.executeOperation.bind(this));
     }
 
     componentWillUnmount() {
         window.removeEventListener('updateCalculatorScreen', this.update.bind(this));
         window.removeEventListener('updateCalculatorOperator', this.updateOperator.bind(this));
+        window.removeEventListener('executeCalculatorOperation', this.executeOperation.bind(this));
     }
 
     isOperatorUndefined() {
@@ -39,12 +41,30 @@ export default class CalculatorTopScreen extends React.Component {
         this.setState({
             operator: event.detail,
             currentValue: event.detail
-        }); console.log(this.state);
+        });
+    }
+
+    executeOperation(event) {
+        if(event.detail == 'execute') {
+            if(this.isOperatorUndefined()) return;
+            this.setState({ currentValue: eval(this.state.firstValue + this.state.operator + this.state.secondValue) });
+        } else {
+            this.clearTopScreen();
+        }
+    }
+
+    clearTopScreen() {
+        this.setState({
+            firstValue: '',
+            operator: '',
+            secondValue: '',
+            currentValue: ''
+        });
     }
 
     render() {
         return (
-            <div className="calculator-field">{ this.state.currentValue }</div>
+            <div className="col-md-8 calculator-field">{ this.state.currentValue }</div>
         )
     }
 }

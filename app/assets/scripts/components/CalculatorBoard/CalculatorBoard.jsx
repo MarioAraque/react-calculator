@@ -4,7 +4,7 @@ import CalculatorButton from '../CalculatorButton/CalculatorButton.jsx';
 export default class CalculatorBoard extends React.Component {
     render() {
         return (
-            <div className="calculator-board-container">
+            <div className="col-md-6">
                 <div className="row">
                     <div className="col-md-2">
                         <CalculatorButton value="7" type="literal" />
@@ -27,10 +27,10 @@ export default class CalculatorBoard extends React.Component {
                         <CalculatorButton value="6" type="literal" />
                     </div>
                     <div className="col-md-2">
-                        <CalculatorButton value="-" type="operator" action="min" />
+                        <CalculatorButton value="-" type="operator" />
                     </div>
                     <div className="col-md-2">
-                        <CalculatorButton value="+" type="operator" action="sum" />
+                        <CalculatorButton value="+" type="operator" />
                     </div>
                 </div>
                 <div className="row">
@@ -44,21 +44,21 @@ export default class CalculatorBoard extends React.Component {
                         <CalculatorButton value="3" type="literal" />
                     </div>
                     <div className="col-md-2">
-                        <CalculatorButton value="/" type="operator" action="div" />
+                        <CalculatorButton value="/" type="operator" />
                     </div>
                     <div className="col-md-2">
-                        <CalculatorButton value="*" type="operator" action="mult" />
+                        <CalculatorButton value="*" type="operator" />
                     </div>
                 </div>
                 <div className="row">
                     <div className="col-md-2">
-                        <CalculatorButton value="C" type="operator" action="clear" />
+                        <CalculatorButton value="C" type="submit" action="clear" />
                     </div>
                     <div className="col-md-2">
                         <CalculatorButton value="0" type="literal" />
                     </div>
                     <div className="col-md-2">
-                        <CalculatorButton value="=" type="operator" action="execute" />
+                        <CalculatorButton value="=" type="submit" action="execute" />
                     </div>
                 </div>
             </div>
